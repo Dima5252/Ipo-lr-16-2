@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Товары</title>
+</head>
+<body>
+
+<h1>Список товаров</h1>
+
+{% for product in products %}
+    <div>
+        <h3>{{ product.name }}</h3>
+
+        <p>{{ product.price }} BYN</p>
+
+        <a href="/product/{{ product.id }}/">
+            Подробнее
+        </a>
+    </div>
+
+    <hr>
+
+{% empty %}
+    <p>Товаров нет</p>
+{% endfor %}
+
+</body>
+</html>

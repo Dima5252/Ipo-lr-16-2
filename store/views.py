@@ -1,24 +1,27 @@
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .models import Product
 
 
-def home(request):
-    return HttpResponse("""
-    <h1>Главная страница</h1>
+def product_list(request):
 
-    <a href="/about/">Об авторе</a><br><br>
+    products = Product.objects.all().order_by("name")
 
-    <a href="/shop-info/">О магазине</a>
-    """)
-
-
-def about(request):
-    return HttpResponse("""
-    Автор работы: Дмитрий
-    """)
+    return render(
+        request,
+        "store/product_list.html",
+        {"products": products}
+    )
 
 
-def shop_info(request):
-    return HttpResponse("""
-    Интернет-магазин атрибутики из фильмов,
-    сериалов, игр и мультфильмов.
-    """)
+def product_detail(request, product_id):
+
+    product = get_object_or_404(
+        Product,
+        id=product_id
+    )
+
+    return render(
+        request,
+        "store/product_detail.html",
+        {"product": product}
+    )
