@@ -1,90 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Корзина</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>
-Корзина
-</h1>
+{% block content %}
 
-<table border="1">
+<h2 class="mb-4">Корзина</h2>
 
-<tr>
-<th>Товар</th>
-<th>Количество</th>
-<th>Стоимость</th>
-<th>Действие</th>
-</tr>
+{% if items %}
 
-{% for item in items %}
-
-<tr>
-
-<td>
-{{ item.product.name }}
-</td>
-
-<td>
-
-<form
-action="/cart/update/{{ item.id }}/"
-method="post">
-
-{% csrf_token %}
-
-<input
-type="number"
-name="quantity"
-value="{{ item.quantity }}">
-
-<button type="submit">
-Обновить
-</button>
-
-</form>
-
-</td>
-
-<td>
-{{ item.item_cost }}
-</td>
-
-<td>
-
-<a href="/cart/remove/{{ item.id }}/">
-Удалить
-</a>
-
-</td>
-
-</tr>
-
-{% endfor %}
-
+<table class="table table-bordered align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>
+                <form action="/cart/update/{{ item.id }}/" method="post" class="d-flex gap-2">
+                    {% csrf_token %}
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control form-control-sm" style="width: 80px;">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Обновить</button>
+                </form>
+            </td>
+            <td>{{ item.item_cost }} BYN</td>
+            <td>
+                <a href="/cart/remove/{{ item.id }}/" class="btn btn-outline-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
-<h2>
+<h4 class="text-end">Итого: {{ cart.total_cost }} BYN</h4>
 
-Общая стоимость:
+<div class="d-flex justify-content-between mt-3">
+    <a href="/catalog/" class="btn btn-outline-secondary">Вернуться в каталог</a>
+    <a href="/checkout/" class="btn btn-success">Оформить заказ</a>
+</div>
 
-{{ cart.total_cost }}
+{% else %}
+    <p class="text-muted">Корзина пуста.</p>
+    <a href="/catalog/" class="btn btn-primary">Перейти в каталог</a>
+{% endif %}
 
-</h2>
-
-<a href="/catalog/">
-
-Вернуться в каталог
-
-</a>
-<br><br>
-
-<a href="/checkout/">
-
-Оформить заказ
-
-</a>
-
-</body>
-</html>
+{% endblock %}

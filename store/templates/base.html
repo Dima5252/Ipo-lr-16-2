@@ -36,9 +36,10 @@
                 <a class="btn btn-outline-light me-2" href="/cart/">
                     Корзина
                 </a>
-                <a class="btn btn-outline-secondary" href="/accounts/logout/">
-                    Выйти ({{ user.username }})
-                </a>
+                <form method="post" action="/accounts/logout/" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-secondary">Выйти ({{ user.username }})</button>
+                </form>
             {% else %}
                 <a class="btn btn-outline-light" href="/accounts/login/">
                     Войти

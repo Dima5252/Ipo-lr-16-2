@@ -1,41 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>{{ product.name }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>
-{{ product.name }}
-</h1>
+{% block content %}
 
-<p>
-{{ product.description }}
-</p>
+<div class="row">
 
-<p>
-Цена:
-{{ product.price }} BYN
-</p>
+    <div class="col-md-5">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" class="img-fluid rounded" alt="{{ product.name }}">
+        {% endif %}
+    </div>
 
-<p>
-Количество:
-{{ product.stock_quantity }}
-</p>
+    <div class="col-md-7">
+        <h2>{{ product.name }}</h2>
 
-<p>
-Категория:
-{{ product.category }}
-</p>
+        <p class="text-muted">{{ product.description }}</p>
 
-<p>
-Производитель:
-{{ product.manufacturer }}
-</p>
+        <table class="table table-borderless w-auto">
+            <tr>
+                <td class="fw-bold">Цена:</td>
+                <td>{{ product.price }} BYN</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">В наличии:</td>
+                <td>{{ product.stock_quantity }} шт.</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Категория:</td>
+                <td>{{ product.category }}</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Производитель:</td>
+                <td>{{ product.manufacturer }}</td>
+            </tr>
+        </table>
 
-<a href="/catalog/">
-Назад
-</a>
+        <div class="d-flex gap-2 mt-3">
+            <a href="/cart/add/{{ product.id }}/" class="btn btn-success">В корзину</a>
+            <a href="/catalog/" class="btn btn-outline-secondary">Назад в каталог</a>
+        </div>
 
-</body>
-</html>
+    </div>
+
+</div>
+
+{% endblock %}
