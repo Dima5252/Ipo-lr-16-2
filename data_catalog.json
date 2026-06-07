@@ -1,0 +1,549 @@
+[
+  {
+    "model": "store.category",
+    "pk": 1,
+    "fields": {
+      "name": "Marvel"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 2,
+    "fields": {
+      "name": "DC Comics"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 3,
+    "fields": {
+      "name": "Star Wars"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 4,
+    "fields": {
+      "name": "Harry Potter"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 5,
+    "fields": {
+      "name": "Pokemon"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 6,
+    "fields": {
+      "name": "Minecraft"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 7,
+    "fields": {
+      "name": "Anime"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 8,
+    "fields": {
+      "name": "LEGO"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 9,
+    "fields": {
+      "name": "Video Games"
+    }
+  },
+  {
+    "model": "store.category",
+    "pk": 10,
+    "fields": {
+      "name": "Collectibles"
+    }
+  },
+  {
+    "model": "store.manufacturer",
+    "pk": 2,
+    "fields": {
+      "name": "Funko"
+    }
+  },
+  {
+    "model": "store.manufacturer",
+    "pk": 3,
+    "fields": {
+      "name": "Hasbro"
+    }
+  },
+  {
+    "model": "store.manufacturer",
+    "pk": 4,
+    "fields": {
+      "name": "LEGO"
+    }
+  },
+  {
+    "model": "store.manufacturer",
+    "pk": 5,
+    "fields": {
+      "name": "Bandai"
+    }
+  },
+  {
+    "model": "store.manufacturer",
+    "pk": 6,
+    "fields": {
+      "name": "Mattel"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 1,
+    "fields": {
+      "name": "Funko Pop Spider-Man",
+      "description": "Funko Pop Spider-Man",
+      "price": "39.99",
+      "stock_quantity": 15,
+      "category": 1,
+      "manufacturer": 2,
+      "image": "products/E1088682_1.jpg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 2,
+    "fields": {
+      "name": "Funko Pop Iron Man",
+      "description": "Funko Pop Iron Man",
+      "price": "44.99",
+      "stock_quantity": 10,
+      "category": 1,
+      "manufacturer": 2,
+      "image": "products/Funko-Pop-Marvel_-Marvel-Iron-Man-616-Web-Disney-Parks-Exclusive.webp"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 3,
+    "fields": {
+      "name": "Funko Pop Captain America",
+      "description": "Funko Pop Captain America",
+      "price": "39.99",
+      "stock_quantity": 10,
+      "category": 1,
+      "manufacturer": 2,
+      "image": "products/E1084550_1.jpg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "name": "Funko Pop Hulk",
+      "description": "Funko Pop Hulk",
+      "price": "59.99",
+      "stock_quantity": 12,
+      "category": 1,
+      "manufacturer": 2,
+      "image": "products/61XXk2TQ8OL._AC_UF8941000_QL80_.jpg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 5,
+    "fields": {
+      "name": "Funko Pop Deadpool",
+      "description": "Funko Pop Deadpool",
+      "price": "59.99",
+      "stock_quantity": 11,
+      "category": 1,
+      "manufacturer": 2,
+      "image": "products/71eNfGLlTL._AC_UF8941000_QL80_.jpg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 6,
+    "fields": {
+      "name": "Funko Pop Batman",
+      "description": "Funko Pop Batman",
+      "price": "45.00",
+      "stock_quantity": 9,
+      "category": 2,
+      "manufacturer": 2,
+      "image": "products/618kVXoa8OL.jpg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 7,
+    "fields": {
+      "name": "Funko Pop Joker",
+      "description": "Funko Pop Joker",
+      "price": "44.99",
+      "stock_quantity": 15,
+      "category": 2,
+      "manufacturer": 2,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 8,
+    "fields": {
+      "name": "Funko Pop Superman",
+      "description": "Funko Pop Superman",
+      "price": "49.99",
+      "stock_quantity": 20,
+      "category": 2,
+      "manufacturer": 2,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 9,
+    "fields": {
+      "name": "Funko Pop Wonder Woman",
+      "description": "Funko Pop Wonder Woman",
+      "price": "59.99",
+      "stock_quantity": 7,
+      "category": 2,
+      "manufacturer": 2,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 10,
+    "fields": {
+      "name": "Darth Vader Figure",
+      "description": "Darth Vader Figure",
+      "price": "69.99",
+      "stock_quantity": 22,
+      "category": 3,
+      "manufacturer": 3,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 11,
+    "fields": {
+      "name": "Stormtrooper Figure",
+      "description": "Stormtrooper Figure",
+      "price": "55.00",
+      "stock_quantity": 10,
+      "category": 3,
+      "manufacturer": 3,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 12,
+    "fields": {
+      "name": "Grogu Figure",
+      "description": "Grogu Figure",
+      "price": "39.99",
+      "stock_quantity": 5,
+      "category": 3,
+      "manufacturer": 3,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 13,
+    "fields": {
+      "name": "Mandalorian Figure",
+      "description": "Mandalorian Figure",
+      "price": "34.99",
+      "stock_quantity": 30,
+      "category": 3,
+      "manufacturer": 3,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 14,
+    "fields": {
+      "name": "Yoda Figure",
+      "description": "Yoda Figure",
+      "price": "20.00",
+      "stock_quantity": 60,
+      "category": 3,
+      "manufacturer": 3,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 15,
+    "fields": {
+      "name": "R2-D2 Figure",
+      "description": "R2-D2 Figure",
+      "price": "69.99",
+      "stock_quantity": 6,
+      "category": 3,
+      "manufacturer": 3,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 16,
+    "fields": {
+      "name": "Harry Potter Wand",
+      "description": "Harry Potter Wand",
+      "price": "30.00",
+      "stock_quantity": 10,
+      "category": 8,
+      "manufacturer": 6,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 17,
+    "fields": {
+      "name": "Hermione Granger Wand",
+      "description": "Hermione Granger Wand",
+      "price": "69.99",
+      "stock_quantity": 10,
+      "category": 10,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 18,
+    "fields": {
+      "name": "Ron Weasley Wand",
+      "description": "Ron Weasley Wand",
+      "price": "40.00",
+      "stock_quantity": 8,
+      "category": 10,
+      "manufacturer": 6,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 19,
+    "fields": {
+      "name": "Minecraft Steve Figure",
+      "description": "Minecraft Steve Figure",
+      "price": "30.00",
+      "stock_quantity": 15,
+      "category": 6,
+      "manufacturer": 4,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 20,
+    "fields": {
+      "name": "Minecraft Creeper Figure",
+      "description": "Minecraft Creeper Figure",
+      "price": "50.00",
+      "stock_quantity": 12,
+      "category": 6,
+      "manufacturer": 4,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 21,
+    "fields": {
+      "name": "Minecraft Enderman Figure",
+      "description": "Minecraft Enderman Figure",
+      "price": "40.00",
+      "stock_quantity": 10,
+      "category": 6,
+      "manufacturer": 4,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 22,
+    "fields": {
+      "name": "Pikachu Figure",
+      "description": "Pikachu Figure",
+      "price": "30.00",
+      "stock_quantity": 5,
+      "category": 5,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 23,
+    "fields": {
+      "name": "Charizard Figure",
+      "description": "Charizard Figure",
+      "price": "15.00",
+      "stock_quantity": 60,
+      "category": 5,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 24,
+    "fields": {
+      "name": "Bulbasaur Figure",
+      "description": "Bulbasaur Figure",
+      "price": "20.00",
+      "stock_quantity": 40,
+      "category": 5,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 25,
+    "fields": {
+      "name": "Naruto Uzumaki Figure",
+      "description": "Naruto Uzumaki Figure",
+      "price": "10.00",
+      "stock_quantity": 10,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 26,
+    "fields": {
+      "name": "Sasuke Uchiha Figure",
+      "description": "Sasuke Uchiha Figure",
+      "price": "10.00",
+      "stock_quantity": 10,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 27,
+    "fields": {
+      "name": "Tanjiro Kamado Figure",
+      "description": "Tanjiro Kamado Figure",
+      "price": "10.00",
+      "stock_quantity": 10,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 28,
+    "fields": {
+      "name": "Nezuko Kamado Figure",
+      "description": "Nezuko Kamado Figure",
+      "price": "15.00",
+      "stock_quantity": 10,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 29,
+    "fields": {
+      "name": "Monkey D. Luffy Figure",
+      "description": "Monkey D. Luffy Figure",
+      "price": "20.00",
+      "stock_quantity": 10,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 30,
+    "fields": {
+      "name": "Roronoa Zoro Figure",
+      "description": "Roronoa Zoro Figure",
+      "price": "20.00",
+      "stock_quantity": 10,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 31,
+    "fields": {
+      "name": "Son Goku Figure",
+      "description": "Son Goku Figure",
+      "price": "15.00",
+      "stock_quantity": 10,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 32,
+    "fields": {
+      "name": "Vegeta Figure",
+      "description": "Vegeta Figure",
+      "price": "20.00",
+      "stock_quantity": 12,
+      "category": 7,
+      "manufacturer": 5,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 33,
+    "fields": {
+      "name": "Sonic Figure",
+      "description": "Sonic Figure",
+      "price": "30.00",
+      "stock_quantity": 10,
+      "category": 9,
+      "manufacturer": 6,
+      "image": ""
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 34,
+    "fields": {
+      "name": "Super Mario Figure",
+      "description": "Super Mario Figure",
+      "price": "30.00",
+      "stock_quantity": 10,
+      "category": 9,
+      "manufacturer": 6,
+      "image": ""
+    }
+  }
+]

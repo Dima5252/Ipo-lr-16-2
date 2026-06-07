@@ -60,7 +60,8 @@ WSGI_APPLICATION = 'shop_project.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+        default="postgres://postgres:pass@localhost:5432/shop",
+        conn_max_age=600,
     )
 }
 
