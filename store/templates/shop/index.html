@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container">
+
+        <h1 class="display-5 fw-bold">
+            Магазин игрушек и коллекционной атрибутики
+        </h1>
+
+        <p class="col-md-8 fs-5">
+            Фигурки, сувениры и товары по фильмам, сериалам, играм и мультфильмам.
+        </p>
+
+        <a href="/catalog/" class="btn btn-primary btn-lg">
+            Перейти в каталог
+        </a>
+
+    </div>
+</div>
+
+<!-- КАТЕГОРИИ -->
+<div class="container mb-4">
+
+    <h2 class="mb-3">Категории</h2>
+
+    <div class="row">
+
+        {% for category in categories %}
+
+        <div class="col-md-3 mb-2">
+            <a href="/catalog/?category={{ category.id }}" class="btn btn-outline-dark w-100">
+                {{ category.name }}
+            </a>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- ТОВАРЫ -->
+<div class="container">
+
+    <h2 class="mb-3">Популярные товары</h2>
+
+    <div class="row">
+
+        {% for product in products %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <!-- КАРТИНКА -->
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top">
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        {{ product.name }}
+                    </h5>
+
+                    <p class="card-text">
+                        {{ product.price }} BYN
+                    </p>
+
+                    <a href="/product/{{ product.id }}/" class="btn btn-primary btn-sm">
+                        Подробнее
+                    </a>
+
+                    <a href="/cart/add/{{ product.id }}/" class="btn btn-success btn-sm">
+                        В корзину
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

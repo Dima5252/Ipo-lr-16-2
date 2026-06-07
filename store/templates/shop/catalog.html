@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="row">
+
+        <!-- ФИЛЬТРЫ -->
+        <div class="col-md-3">
+
+            <h5>Фильтры</h5>
+
+            <form method="get">
+
+                <div class="mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="Поиск...">
+                </div>
+
+                <div class="mb-3">
+                    <select name="category" class="form-control">
+                        <option value="">Категория</option>
+                        {% for c in categories %}
+                            <option value="{{ c.id }}">{{ c.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <select name="manufacturer" class="form-control">
+                        <option value="">Производитель</option>
+                        {% for m in manufacturers %}
+                            <option value="{{ m.id }}">{{ m.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button class="btn btn-primary w-100">
+                    Применить
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- ТОВАРЫ -->
+        <div class="col-md-9">
+
+            <div id="spinner" class="text-center my-3">
+                <div class="spinner-border"></div>
+            </div>
+
+            <div class="row" id="products-container"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/main.js"></script>
+{% endblock %}

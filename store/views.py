@@ -7,6 +7,25 @@ from .models import Order, OrderItem
 import os
 from django.conf import settings
 
+from django.shortcuts import render
+from .models import Product, Category
+
+
+def index(request):
+
+    products = Product.objects.all()[:6]
+
+    categories = Category.objects.all()
+
+    return render(
+        request,
+        'shop/index.html',
+        {
+            'products': products,
+            'categories': categories
+        }
+    )
+
 from .models import (
     Product,
     Category,
