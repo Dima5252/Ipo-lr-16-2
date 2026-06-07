@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.core.mail import EmailMessage
+from openpyxl import Workbook
+from .models import Order, OrderItem
+import os
+from django.conf import settings
 
 from .models import (
     Product,
@@ -146,3 +151,93 @@ def update_cart(request, item_id):
             item.save()
 
     return redirect("cart")
+
+@login_required
+def checkout(request):
+
+    cart = get_object_or_404(
+        Cart,
+        user=request.user
+    )
+
+    items = CartItem.objects.filter(
+        cart=cart
+    )
+
+    if request.method == "POST":
+
+        address = request.POST.get(
+            "address"
+        )
+
+        order = Order.objects.create(
+            user=request.user,
+            address=address,
+            total_price=cart.total_cost()
+        )
+
+        for item in items:
+
+            OrderItem.objects.create(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.product.price
+            )
+
+        wb = Workbook()
+
+        ws = wb.active
+
+        ws.append(
+            [
+                "Товар",
+                "Количество",
+                "Цена"
+            ]
+        )
+
+        for item in items:
+
+            ws.append(
+                [
+                    item.product.name,
+                    item.quantity,
+                    float(item.product.price)
+                ]
+            )
+
+        ws.append([])
+        ws.append(
+            [
+                "Итого",
+                float(cart.total_cost())
+            ]
+        )
+
+        filename = f"receipt_{order.id}.xlsx"
+
+        wb.save(filename)
+
+        email = EmailMessage(
+            "Ваш заказ",
+            "Спасибо за покупку",
+            settings.EMAIL_HOST_USER,
+            [request.user.email]
+        )
+
+        email.attach_file(filename)
+
+        email.send()
+
+        items.delete()
+
+        return render(
+            request,
+            "store/success.html"
+        )
+
+    return render(
+        request,
+        "store/checkout.html"
+    )
