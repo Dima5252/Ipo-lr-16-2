@@ -1,1 +1,1 @@
-web: gunicorn shop_project.wsgi
+web: python manage.py migrate && gunicorn shop_project.wsgi:application --bind 0.0.0.0:8080

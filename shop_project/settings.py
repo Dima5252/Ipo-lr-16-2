@@ -5,10 +5,8 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# =========================
-# SECURITY
-# =========================
-SECRET_KEY = config("SECRET_KEY", default="django-insecure-dev-key")
+SECRET_KEY = config("SECRET_KEY", default="unsafe-secret-key")
+
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = [
@@ -17,9 +15,6 @@ ALLOWED_HOSTS = [
     ".up.railway.app"
 ]
 
-# =========================
-# APPLICATIONS
-# =========================
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,9 +27,6 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-# =========================
-# MIDDLEWARE
-# =========================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -49,9 +41,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'shop_project.urls'
 
-# =========================
-# TEMPLATES
-# =========================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -69,65 +58,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'shop_project.wsgi.application'
 
-# =========================
-# DATABASE
-# =========================
 DATABASES = {
     "default": dj_database_url.config(
-        default="sqlite:///db.sqlite3"
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
     )
 }
 
-# =========================
-# PASSWORD VALIDATION
-# =========================
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
-# =========================
-# INTERNATIONALIZATION
-# =========================
 LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Europe/Minsk'
 USE_I18N = True
 USE_TZ = True
 
-# =========================
-# STATIC FILES
-# =========================
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# =========================
-# MEDIA FILES
-# =========================
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
-# =========================
-# REST FRAMEWORK
-# =========================
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ]
 }
 
-# =========================
-# EMAIL
-# =========================
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# =========================
-# PRODUCTION SECURITY
-# =========================
 if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
