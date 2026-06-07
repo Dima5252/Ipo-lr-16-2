@@ -24,4 +24,6 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
 
     path('api/', include(router.urls)),
+    path("api/me/", views.me),
+    path("profile/", views.profile_page),
 ]

@@ -10,6 +10,12 @@ from django.conf import settings
 from django.shortcuts import render
 from .models import Product, Category
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from .models import Profile
+from .serializers import ProfileSerializer
+
 
 def index(request):
 
@@ -273,9 +279,20 @@ def checkout(request):
         "store/checkout.html"
     )
 
+from rest_framework.permissions import BasePermission
+
+
+class IsAdminOrReadOnly(BasePermission):
+    def has_permission(self, request, view):
+        if request.method in ["GET"]:
+            return True
+        return request.user and request.user.is_staff
+
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [IsAdminOrReadOnly]
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -299,10 +316,37 @@ class CartItemViewSet(viewsets.ModelViewSet):
 
 
 class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_staff:
+            return Order.objects.all()
+        return Order.objects.filter(user=user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class OrderItemViewSet(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
+
+@api_view(["GET", "PATCH"])
+@permission_classes([IsAuthenticated])
+def me(request):
+
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == "GET":
+        return Response(ProfileSerializer(profile).data)
+
+    if request.method == "PATCH":
+        serializer = ProfileSerializer(profile, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
+def profile_page(request):
+    return render(request, "store/profile.html")
